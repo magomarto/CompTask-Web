@@ -1,34 +1,47 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+// using CompTask_Web.Data;
+// using Comptask_Web.Models.Identity;
+//using Comptask_Web.Models.Entities;
+//using Comptask_Web.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
-// CRUD DE TAREFAS FILTROS E BUSCAS
+
+// CONTROLADOR PARA O CRUD DAS TAREFAS
+// E FILTROS E BUSCAS
 
 namespace CompTask_Web.Controllers
 {
-    [Route("[controller]")]
+    [Authorize] // só  usuarios autenticados acessam
     public class TaskController : Controller
     {
-        private readonly ILogger<TaskController> _logger;
+      /*  private readonly AppDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public TaskController(ILogger<TaskController> logger)
+        public TaskController(
+            AppDbContext context,
+            UserManager<ApplicationUser> userManager)
         {
-            _logger = logger;
-        }
+            _context = context;
+            _userManager = userManager;
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        }*/
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View("Error!");
-        }
+
+        // GET: tasks (com filtros)
+            // aplica filtros
+        
+        //GET: Tasks/Create
+
+        //POST: tasks/Create
+
+        // GET: TASKS/EDIT
+
+        // POST: TASKS/EDIT
+
+        // POST: TASKS/DELETE
+
+        // POST: Tasks/ToggleStatus(Marca como concluída)
     }
+
 }

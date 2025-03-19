@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-// AUTENTICAÇÃO : LOGIN, REGISTRO, LOGOUT
+// CONTROLADOR DE AUTENTICAÇÃO : LOGIN, REGISTRO, LOGOUT
 
 namespace CompTask_Web.Controllers
 {
-    [Route("[controller]")]
+    [Route("[controller]")] //MUDAR PARA ACESSO SEM AUTENTICAÇÃO
     public class AccountController : Controller
     {
         private readonly ILogger<AccountController> _logger;
