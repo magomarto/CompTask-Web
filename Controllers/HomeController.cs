@@ -2,6 +2,8 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using CompTask_Web.Models;
 
+// PAGINA INICIAL E OUTRAS AÇÕES BÁSICAS
+
 namespace CompTask_Web.Controllers;
 
 public class HomeController : Controller
