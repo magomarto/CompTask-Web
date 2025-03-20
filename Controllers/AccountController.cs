@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using CompTask_Web.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -10,7 +12,7 @@ using Microsoft.Extensions.Logging;
 
 namespace CompTask_Web.Controllers
 {
-    [Route("[controller]")] //MUDAR PARA ACESSO SEM AUTENTICAÇÃO
+    [AllowAnonymous] //aACESSO SEM AUTENTICAÇÃO
     public class AccountController : Controller
     {
         private readonly ILogger<AccountController> _logger;
@@ -20,15 +22,33 @@ namespace CompTask_Web.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Login() // GET: Account/Login
         {
-            return View();
+
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel model) // POST: Account/Login
         {
-            return View("Error!");
+
+        }
+
+        public IActionResult Register()// GET: Account/Register
+        {
+            return View(new RegisterViewModel());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel model)//POST: Account/Register
+        {
+
+        }
+
+        [HttpPost]
+        public async<IActionResult> Logout() //POST: ACCOUNT/Logout
+
+        {
+
         }
     }
 }
