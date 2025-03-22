@@ -1,11 +1,11 @@
-//using CompTask_Web.Data;
-//using Comptask_Web.Models.Identity;
-//using Comptask_Web.Models.Entities;
-//using Comptask_Web.Models.ViewModels;
+using CompTask_Web.Data;
+using CompTask_Web.Models.Identity;
+using CompTask_Web.Models.Entities;
 using CompTask_Web.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 
 // CONTROLADOR PARA O CRUD DAS TAREFAS
@@ -38,15 +38,14 @@ namespace CompTask_Web.Controllers
 
         }
         
-        public IActionResult Create() //GET: Tasks/Create
+        public IActionResult Create() //GET: Tasks/Create (feito)
         {
-
+            return View(new TaskViewModel());
         }
 
 
         [HttpPost]
         public async Task<IActionResult> Create(TaskViewModel model)//POST: tasks/Create
-
         {
 
         }
@@ -63,15 +62,32 @@ namespace CompTask_Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(int id) // POST: TASKS/DELETE
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id) // POST: TASKS/DELETE (feito)
         {
+            var task = await _context.Tasks.FindAsync(id);
+            if (task != null)
+            {
+                _context.Tasks.Remove(task);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(Index));
 
 
         }
 
         [HttpPost]
-        public async Task<IActionResult> ToggleStatus(int id)// POST: Tasks/ToggleStatus(Marca como concluída)
+        public async Task<IActionResult> ToggleStatus(int id)// POST: Tasks/ToggleStatus(Marca como concluída) (feito)
         {
+            var task = await _context.Tasks.FindAsync(id);
+            if (task != null)
+            {
+                task.IsCompleted = !task.IsCompleted;
+                _context.Update(task);
+                await _context.SaveChangesAsync();
+
+            }
+            return RedirectToAction(nameof(Index));
 
         }
     }
