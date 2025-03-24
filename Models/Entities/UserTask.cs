@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 using CompTask_Web.Models.Identity;
 using CompTask_Web.Models.Enums;
 
-
 namespace CompTask_Web.Models.Entities
 {
     public class UserTask
@@ -14,7 +13,7 @@ namespace CompTask_Web.Models.Entities
         public string Description { get; set; }
         public DateTime DueDate { get; set; } = DateTime.Now.AddDays(1);
         public Priority TaskPriority { get; set; } = Priority.Medium;
-        public Status IsCompleted { get; set; } // RELACIONAMENTO COM DATA? PARA VENCIMENTO?
+        public Status TaskStatus { get; set; } = Status.Pending; // RELACIONAMENTO COM DATA? PARA VENCIMENTO?
 
         [ForeignKey("User")]
         public string UserId { get; set; }//RELACIONAMENTO COM USUÁRIO:

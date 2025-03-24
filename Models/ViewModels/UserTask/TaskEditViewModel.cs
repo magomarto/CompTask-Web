@@ -23,7 +23,7 @@ namespace CompTask_Web.Models.ViewModels.UserTask
         public Priority TaskPriority { get; set; } = Priority.Medium;
 
         [Display(Name = "Status")]
-        public Status isCompleted { get; set; }
+        public Status TaskStatus { get; set; }
 
     }
 }
